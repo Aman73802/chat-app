@@ -8,8 +8,11 @@ export const sendMessage = async (req, res) => {
     const senderId = req.user.userId;
     const { message } = req.body;
     const image = req.body.image;
-    if (!message && !image) {
-      return res.status(400).json({ error: "Message or image is required" });
+    const audio = req.body.audio;
+    if (!message && !image && !audio) {
+      return res
+        .status(400)
+        .json({ error: "Message, image, or audio is required" });
     }
     let conversation = await Conversation.findOne({
       participants: {
@@ -27,6 +30,7 @@ export const sendMessage = async (req, res) => {
       recieverId,
       message: message || " ",
       image: image || null,
+      audio: audio || null,
     });
 
     if (newMessage) {

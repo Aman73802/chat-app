@@ -18,5 +18,17 @@ router.post(
     res.status(201).json({ imageUrl: `/uploads/${req.file.filename}` });
   }
 );
+router.post(
+  "/upload-audio",
+  protectedRoute,
+  upload.single("audio"),
+  (req, res) => {
+    if (!req.file) {
+      return res.status(400).json({ error: "No audio uploaded" });
+    }
+    // Return the audio URL
+    res.status(201).json({ audioUrl: `/uploads/${req.file.filename}` });
+  }
+);
 
 export default router;

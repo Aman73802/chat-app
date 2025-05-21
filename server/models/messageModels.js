@@ -20,6 +20,10 @@ const messageSchema = mongoose.Schema(
       type: String,
       default: null,
     },
+    audio: {
+      type: String,
+      default: null,
+    },
   },
   { timestamps: true }
 );

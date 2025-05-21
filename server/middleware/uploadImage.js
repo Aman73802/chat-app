@@ -18,12 +18,15 @@ const storage = multer.diskStorage({
   },
 });
 
-// File filter for images only
+// File filter for images and audio only
 const fileFilter = (req, file, cb) => {
-  if (file.mimetype.startsWith("image/")) {
+  if (
+    file.mimetype.startsWith("image/") ||
+    file.mimetype.startsWith("audio/")
+  ) {
     cb(null, true);
   } else {
-    cb(new Error("Only image files are allowed!"), false);
+    cb(new Error("Only image and audio files are allowed!"), false);
   }
 };
 

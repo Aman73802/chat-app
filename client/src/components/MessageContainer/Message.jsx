@@ -11,8 +11,9 @@ const Message = ({message,selectedConversation}) => {
      return {hours,minutes};
   }
   const {hours,minutes} = extractTime(message.createdAt);
-  // Check if message has image
+  // Check if message has image or audio
   const hasImage = message.image;
+  const hasAudio = message.audio;
   return (
     <div className={`chat ${isSender ? 'chat-end' : 'chat-start'} p-4`}>
       <div className="chat-image avatar">
@@ -25,6 +26,9 @@ const Message = ({message,selectedConversation}) => {
       <div className={`chat-bubble max-w-36 ${isSender && 'bg-blue-500 text-white'}`}>
         {hasImage && (
           <img src={`http://localhost:8000${message.image}`} alt="sent" className="mb-2 max-w-[120px] rounded" />
+        )}
+        {hasAudio && (
+          <audio src={`http://localhost:8000${message.audio}`} controls className="mb-2 w-full" style={{width:'120px'}} />
         )}
         {message.message}
       </div>
