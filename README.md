@@ -28,8 +28,6 @@ A full-stack real-time chat application built using the **MERN Stack** (MongoDB,
 ## 🔧 Setup Instructions
 
 1. Clone the repository
-
-```bash
 git clone https://github.com/Aman73802/chat-app.git
 cd chat-app
 
